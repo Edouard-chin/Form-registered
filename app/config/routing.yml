@@ -1,0 +1,10 @@
+dudek_user:
+    resource: "@DudekUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+dudek_form:
+    resource: "@DudekFormBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

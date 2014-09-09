@@ -1,0 +1,7 @@
+parameters:
+#    dudek_user.example.class: Dudek\UserBundle\Example
+
+services:
+#    dudek_user.example:
+#        class: %dudek_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
