@@ -6,8 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name)
+    public function indexAction($edouard)
     {
-        return $this->render('DudekFormBundle:Default:index.html.twig', array('name' => $name));
+    	var_dump("hello");exit();
     }
 }

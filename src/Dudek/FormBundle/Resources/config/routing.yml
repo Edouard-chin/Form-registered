@@ -1,3 +1,3 @@
 admin_index:
-    path:     /admin/
-    defaults: { _controller: DudekFormBundle:Default:indx }
+    path: /hello/{edouard}
+    defaults: { _controller: DudekFormBundle:Default:index }
