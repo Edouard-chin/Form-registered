@@ -57,7 +57,7 @@ class Form
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -80,7 +80,7 @@ class Form
     /**
      * Get created
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -103,7 +103,7 @@ class Form
     /**
      * Get opendate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getOpendate()
     {
@@ -126,7 +126,7 @@ class Form
     /**
      * Get closedate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getClosedate()
     {
@@ -139,9 +139,10 @@ class Form
      * @param \Dudek\FormBundle\Entity\Question $questions
      * @return Form
      */
-    public function addQuestion(\Dudek\FormBundle\Entity\Question $questions)
+    public function addQuestion(\Dudek\FormBundle\Entity\Question $question)
     {
-        $this->questions[] = $questions;
+        $this->questions[] = $question;
+        $question->setForm($this);
 
         return $this;
     }
@@ -151,15 +152,15 @@ class Form
      *
      * @param \Dudek\FormBundle\Entity\Question $questions
      */
-    public function removeQuestion(\Dudek\FormBundle\Entity\Question $questions)
+    public function removeQuestion(\Dudek\FormBundle\Entity\Question $question)
     {
-        $this->questions->removeElement($questions);
+        $this->questions->removeElement($question);
     }
 
     /**
      * Get questions
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getQuestions()
     {

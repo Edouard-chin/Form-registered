@@ -51,7 +51,7 @@ class Question
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -74,7 +74,7 @@ class Question
     /**
      * Get rank
      *
-     * @return integer 
+     * @return integer
      */
     public function getRank()
     {
@@ -97,7 +97,7 @@ class Question
     /**
      * Get question
      *
-     * @return string 
+     * @return string
      */
     public function getQuestion()
     {
@@ -120,7 +120,7 @@ class Question
     /**
      * Get type
      *
-     * @return string 
+     * @return string
      */
     public function getType()
     {
@@ -143,7 +143,7 @@ class Question
     /**
      * Get form
      *
-     * @return \Dudek\FormBundle\Entity\Form 
+     * @return \Dudek\FormBundle\Entity\Form
      */
     public function getForm()
     {

@@ -6,8 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function indexAction($edouard)
+    public function indexAction()
     {
-    	var_dump("hello");exit();
+    	$em = $this->getDoctrine()->getManager();
     }
 }
