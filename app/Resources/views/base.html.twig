@@ -1,13 +1,208 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="{{ app.request.locale }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Edouard CHIN" />
+
+    <title>{% block title %} Admin - {% endblock %}</title>
+    {% stylesheets
+      'bundles/dudekform/css/Back/entypo/css/entypo.css'
+      'bundles/dudekform/css/Back/neon-core.css'
+      'bundles/dudekform/css/Back/bootstrap.css'
+      filter='cssrewrite' output='css/all-admin.css'%}
+      <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/dudekform/css/Back/font-icons/entypo/css/entypo.css') }}" />
+    {% block stylesheets %} {% endblock %}
+
+    {% javascripts
+      'bundles/dudekform/js/Back/jquery-1.11.0.min.js'
+      'bundles/dudekform/js/Back/gsap/main-gsap.js'
+      'bundles/dudekform/js/Back/bootstrap.js'
+      'bundles/dudekform/js/Back/resizeable.js'
+      'bundles/dudekform/js/Back/neon-custom.js'
+      output='js/all-admin.js' %}
+      <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% block javascripts_head %} {% endblock %}
+
+    <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+  </head>
+  <body class="page-body">
+    <div class="page-container">
+      <div class="sidebar-menu">
+        <header class="logo-env">
+          <div class="logo">
+            <a href="index.html">
+              <img src="assets/images/logo@2x.png" width="120" alt="" />
+            </a>
+          </div>
+          <div class="sidebar-collapse">
+            <a href="#" class="sidebar-collapse-icon with-animation">
+            </a>
+          </div>
+          <div class="sidebar-mobile-menu visible-xs">
+            <a href="#" class="with-animation">
+              <i class="entypo-menu"></i>
+            </a>
+          </div>
+        </header>
+        <ul id="main-menu" class="">
+          <li id="search">
+            <form method="get" action="">
+              <input type="text" name="q" class="search-input" placeholder="Search something..."/>
+              <button type="submit">
+                <i class="entypo-search"></i>
+              </button>
+            </form>
+          </li>
+          <li>
+            <a href="index.html">
+              <i class="entypo-gauge"></i>
+              <span>Dashboard</span>
+            </a>
+            <ul>
+              <li>
+                <a href="index.html">
+                  <span>Dashboard 1</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard-2.html">
+                  <span>Dashboard 2</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="layout-api.html">
+              <i class="entypo-layout"></i>
+              <span>Layouts</span>
+            </a>
+            <ul>
+              <li>
+                <a href="layout-api.html">
+                  <span>Layout API</span>
+                </a>
+              </li>
+              <li>
+                <a href="layout-collapsed-sidebar.html">
+                  <span>Collapsed Sidebar</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-content">
+      <div class="row">
+        <div class="col-md-6 col-sm-8 clearfix">
+          <ul class="user-info pull-left pull-none-xsm">
+            <li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="assets/images/thumb-1@2x.png" alt="" class="img-circle" width="44" />
+                Art Ramadani
+              </a>
+              <ul class="dropdown-menu">
+                <li class="caret"></li>
+                <li>
+                  <a href="extra-timeline.html">
+                    <i class="entypo-user"></i>
+                    Edit Profile
+                  </a>
+                </li>
+                <li>
+                  <a href="mailbox.html">
+                    <i class="entypo-mail"></i>
+                    Inbox
+                  </a>
+                </li>
+                <li>
+                  <a href="extra-calendar.html">
+                    <i class="entypo-calendar"></i>
+                    Calendar
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="entypo-clipboard"></i>
+                    Tasks
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div> <!-- Fin du header profle -->
+        <div class="col-md-6 col-sm-4 clearfix hidden-xs">
+          <ul class="list-inline links-list pull-right">
+            <li class="dropdown language-selector">
+              Language: &nbsp;
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
+                <img src="assets/images/flag-uk.png" />
+              </a>
+              <ul class="dropdown-menu pull-right">
+                <li>
+                  <a href="#">
+                    <img src="assets/images/flag-de.png" />
+                    <span>Deutsch</span>
+                  </a>
+                </li>
+                <li class="active">
+                  <a href="#">
+                    <img src="assets/images/flag-uk.png" />
+                    <span>English</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="assets/images/flag-fr.png" />
+                    <span>François</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="assets/images/flag-al.png" />
+                    <span>Shqip</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="assets/images/flag-es.png" />
+                    <span>Español</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="sep"></li>
+            <li>
+              <a href="#" data-toggle="chat" data-animate="1" data-collapse-sidebar="1">
+                <i class="entypo-chat"></i>
+                Chat
+                <span class="badge badge-success chat-notifications-badge is-hidden">0</span>
+              </a>
+            </li>
+            <li class="sep"></li>
+            <li>
+              <a href="extra-login.html">
+                Log Out <i class="entypo-logout right"></i>
+              </a>
+            </li>
+          </ul>
+        </div> <!-- Fin du header language-->
+      </div>
+      <div class="row">
+        {% block container %} {% endblock %}
+      </div>
+    </div>
+    {% block javascripts_body %} {% endblock %}
+  </body>
 </html>
