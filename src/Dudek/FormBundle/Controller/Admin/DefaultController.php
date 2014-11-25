@@ -1,6 +1,6 @@
 <?php
 
-namespace Dudek\FormBundle\Controller;
+namespace Dudek\FormBundle\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -8,6 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-    	$em = $this->getDoctrine()->getManager();
+        return $this->render('DudekFormBundle:Admin:index.html.twig');
     }
 }

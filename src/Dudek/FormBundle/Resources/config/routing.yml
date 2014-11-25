@@ -1,3 +1,3 @@
-admin_index:
-    path: /admin
-    defaults: { _controller: DudekFormBundle:Default:index }
+dudek_form_admin:
+    prefix: /admin
+    resource: "@DudekFormBundle/Resources/config/admin-routing.yml"

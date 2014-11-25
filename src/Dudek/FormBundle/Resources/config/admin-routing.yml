@@ -1,0 +1,3 @@
+dudek_form_admin_index:
+    path:      /
+    defaults:  { _controller: DudekFormBundle:Admin/Default:index }
