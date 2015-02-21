@@ -1,10 +1,8 @@
 {% extends 'DudekUserBundle::base_login.html.twig' %}
 {% block loginForm %}
-  {# {% if error %}
-    <div class="form-login-error" style="display: block;">
-      <h3> {{ error.messageKey|trans(error.messageData, 'security') }} </h3>
-    </div>
-  {% endif %} #}
+  {% if not form.vars.valid %}
+    {{ form_errors(form) }}
+  {% endif %}
   {{ form_start(form) }}
     <input type="hidden" name="_username" value="{{ user.username }}">
     <div class="form-group">

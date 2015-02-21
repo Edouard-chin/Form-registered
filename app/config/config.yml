@@ -3,7 +3,7 @@ imports:
     - { resource: security.yml }
 
 framework:
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -33,8 +33,10 @@ assetic:
             inputs:
                 - "@DudekFormBundle/Resources/public/js/Back/jquery-1.11.0.min.js"
                 - "@DudekFormBundle/Resources/public/js/Back/bootstrap.js"
-            options:
-                output: "js/compiled/boostrap-asset.js"
+            output: "js/compiled/boostrap-asset.js"
+        bootstrap_map:
+            input: "@DudekFormBundle/Resources/public/css/Back/bootstrap.css.map"
+            output: css/compiled/bootstrap.css.map
     debug:          "%kernel.debug%"
     use_controller: false
     bundles:        [ DudekFormBundle, DudekUserBundle ]
