@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Form
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dudek\FormBundle\Entity\FormRepository")
+ * @ORM\Entity()
  */
 class Form
 {
@@ -25,34 +25,37 @@ class Form
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="datetime")
+     * @ORM\Column(type="datetime")
      */
     private $created;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="opendate", type="datetime")
+     * @ORM\Column(type="datetime")
      */
-    private $opendate;
+    private $closeDate;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="closedate", type="datetime")
+     * @ORM\Column(type="string", length=255)
      */
-    private $closedate;
+    private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Question", mappedBy="form", cascade={"all"})
+     * @ORM\Column(type="boolean")
      */
-    protected $questions;
+    private $inscriptionMandatory;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Step", mappedBy="form", cascade={"all"})
+     */
+    private $steps;
 
 
     public function __construct()
     {
-        $this->questions = new ArrayCollection();
         $this->created = new \DateTime();
+        $this->steps = new ArrayCollection();
     }
 
     /**
@@ -83,12 +86,12 @@ class Form
     }
 
     /**
-     * @param \DateTime $opendate
+     * @param \DateTime $closeDate
      * @return Form
      */
-    public function setOpendate($opendate)
+    public function setCloseDate($closeDate)
     {
-        $this->opendate = $opendate;
+        $this->closeDate = $closeDate;
 
         return $this;
     }
@@ -96,55 +99,73 @@ class Form
     /**
      * @return \DateTime
      */
-    public function getOpendate()
+    public function getCloseDate()
     {
-        return $this->opendate;
+        return $this->closeDate;
     }
 
     /**
-     * @param \DateTime $closedate
+     * @param string $name
      * @return Form
      */
-    public function setClosedate($closedate)
+    public function setName($name)
     {
-        $this->closedate = $closedate;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * @return \DateTime
+     * @return string
      */
-    public function getClosedate()
+    public function getName()
     {
-        return $this->closedate;
+        return $this->name;
     }
 
     /**
-     * @param \Dudek\FormBundle\Entity\Question $questions
+     * @return boolean
+     */
+    public function isInscriptionMandatory()
+    {
+        return $this->inscriptionMandatory;
+    }
+
+    /**
+     * @param boolean $boolean
      * @return Form
      */
-    public function addQuestion(\Dudek\FormBundle\Entity\Question $question)
+    public function setInscriptionMandatory($boolean)
     {
-        $this->questions[] = $question;
-        $question->setForm($this);
+        $this->inscriptionMandatory = $boolean;
 
         return $this;
     }
 
     /**
-     * @param \Dudek\FormBundle\Entity\Question $questions
+     * @param \Dudek\FormBundle\Entity\Step $steps
+     * @return Form
      */
-    public function removeQuestion(\Dudek\FormBundle\Entity\Question $question)
+    public function addStep(\Dudek\FormBundle\Entity\Step $step)
     {
-        $this->questions->removeElement($question);
+        $this->steps[] = $step;
+
+        return $this;
+    }
+
+    /**
+     * @param \Dudek\FormBundle\Entity\Step $steps
+     */
+    public function removeStep(\Dudek\FormBundle\Entity\Step $step)
+    {
+        $this->steps->removeElement($step);
     }
 
     /**
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getQuestions()
+    public function getSteps()
     {
-        return $this->questions;
+        return $this->steps;
     }
 }

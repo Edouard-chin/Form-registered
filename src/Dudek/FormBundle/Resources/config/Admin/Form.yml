@@ -1,0 +1,7 @@
+back_form_index:
+    path:   /
+    defaults: { _controller: "DudekFormBundle:Admin/Form:index" }
+
+back_form_create:
+    path:   /create
+    defaults: { _controller: "DudekFormBundle:Admin/Form:create" }

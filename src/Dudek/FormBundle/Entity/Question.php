@@ -3,12 +3,13 @@
 namespace Dudek\FormBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Question
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dudek\FormBundle\Entity\QuestionRepository")
+ * @ORM\Entity()
  */
 class Question
 {
@@ -26,14 +27,7 @@ class Question
      *
      * @ORM\Column(name="Rank", type="integer")
      */
-    private $rank;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Question", type="string", length=255)
-     */
-    private $question;
+    private $rank = 1;
 
     /**
      * @var string
@@ -43,9 +37,24 @@ class Question
     private $type;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Form", inversedBy="questions")
+     * @ORM\Column(type="string", length=255)
      */
-    protected $form;
+    private $name;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Step", inversedBy="questions")
+     */
+    private $step;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Choice", mappedBy="question", cascade={"all"})
+     */
+    private $choices;
+
+    public function __construct()
+    {
+        $this->choices = new ArrayCollection();
+    }
 
     /**
      * @return integer
@@ -75,25 +84,6 @@ class Question
     }
 
     /**
-     * @param string $question
-     * @return Question
-     */
-    public function setQuestion($question)
-    {
-        $this->question = $question;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getQuestion()
-    {
-        return $this->question;
-    }
-
-    /**
      * @param string $type
      * @return Question
      */
@@ -113,21 +103,67 @@ class Question
     }
 
     /**
-     * @param \Dudek\FormBundle\Entity\Form $form
+     * @param string $name
      * @return Question
      */
-    public function setForm(\Dudek\FormBundle\Entity\Form $form = null)
+    public function setName($name)
     {
-        $this->form = $form;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * @return \Dudek\FormBundle\Entity\Form
+     * @return string
      */
-    public function getForm()
+    public function getName()
     {
-        return $this->form;
+        return $this->name;
+    }
+
+    /**
+     * @param \Dudek\FormBundle\Entity\Step $step
+     * @return Question
+     */
+    public function setStep(\Dudek\FormBundle\Entity\Step $step = null)
+    {
+        $this->step = $step;
+
+        return $this;
+    }
+
+    /**
+     * @return \Dudek\FormBundle\Entity\Step
+     */
+    public function getStep()
+    {
+        return $this->step;
+    }
+
+    /**
+     * @param \Dudek\FormBundle\Entity\Choice $choices
+     * @return Question
+     */
+    public function addChoice(\Dudek\FormBundle\Entity\Choice $choice)
+    {
+        $this->choices[] = $choice;
+
+        return $this;
+    }
+
+    /**
+     * @param \Dudek\FormBundle\Entity\Choice $choices
+     */
+    public function removeChoice(\Dudek\FormBundle\Entity\Choice $choice)
+    {
+        $this->choices->removeElement($choice);
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChoices()
+    {
+        return $this->choices;
     }
 }

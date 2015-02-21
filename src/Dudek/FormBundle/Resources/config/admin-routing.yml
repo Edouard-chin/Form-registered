@@ -1,3 +1,7 @@
 dudek_form_admin_index:
     path:      /
     defaults:  { _controller: DudekFormBundle:Admin/Default:index }
+
+front_form:
+    resource: "@DudekFormBundle/Resources/config/Admin/Form.yml"
+    prefix: /form
