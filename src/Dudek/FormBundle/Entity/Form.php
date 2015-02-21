@@ -44,7 +44,7 @@ class Form
     private $closedate;
 
     /**
-     * @ORM\OneToMany(targetEntity="Question", mappedBy="form")
+     * @ORM\OneToMany(targetEntity="Question", mappedBy="form", cascade={"all"})
      */
     protected $questions;
 
@@ -52,11 +52,10 @@ class Form
     public function __construct()
     {
         $this->questions = new ArrayCollection();
+        $this->created = new \DateTime();
     }
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -65,8 +64,6 @@ class Form
     }
 
     /**
-     * Set created
-     *
      * @param \DateTime $created
      * @return Form
      */
@@ -78,8 +75,6 @@ class Form
     }
 
     /**
-     * Get created
-     *
      * @return \DateTime
      */
     public function getCreated()
@@ -88,8 +83,6 @@ class Form
     }
 
     /**
-     * Set opendate
-     *
      * @param \DateTime $opendate
      * @return Form
      */
@@ -101,8 +94,6 @@ class Form
     }
 
     /**
-     * Get opendate
-     *
      * @return \DateTime
      */
     public function getOpendate()
@@ -111,8 +102,6 @@ class Form
     }
 
     /**
-     * Set closedate
-     *
      * @param \DateTime $closedate
      * @return Form
      */
@@ -124,8 +113,6 @@ class Form
     }
 
     /**
-     * Get closedate
-     *
      * @return \DateTime
      */
     public function getClosedate()
@@ -134,8 +121,6 @@ class Form
     }
 
     /**
-     * Add questions
-     *
      * @param \Dudek\FormBundle\Entity\Question $questions
      * @return Form
      */
@@ -148,8 +133,6 @@ class Form
     }
 
     /**
-     * Remove questions
-     *
      * @param \Dudek\FormBundle\Entity\Question $questions
      */
     public function removeQuestion(\Dudek\FormBundle\Entity\Question $question)
@@ -158,8 +141,6 @@ class Form
     }
 
     /**
-     * Get questions
-     *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getQuestions()

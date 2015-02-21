@@ -44,13 +44,10 @@ class Question
 
     /**
      * @ORM\ManyToOne(targetEntity="Form", inversedBy="questions")
-     * @ORM\JoinColumn(name="Form_id", referencedColumnName="id")
      */
     protected $form;
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -59,8 +56,6 @@ class Question
     }
 
     /**
-     * Set rank
-     *
      * @param integer $rank
      * @return Question
      */
@@ -72,8 +67,6 @@ class Question
     }
 
     /**
-     * Get rank
-     *
      * @return integer
      */
     public function getRank()
@@ -82,8 +75,6 @@ class Question
     }
 
     /**
-     * Set question
-     *
      * @param string $question
      * @return Question
      */
@@ -95,8 +86,6 @@ class Question
     }
 
     /**
-     * Get question
-     *
      * @return string
      */
     public function getQuestion()
@@ -105,8 +94,6 @@ class Question
     }
 
     /**
-     * Set type
-     *
      * @param string $type
      * @return Question
      */
@@ -118,8 +105,6 @@ class Question
     }
 
     /**
-     * Get type
-     *
      * @return string
      */
     public function getType()
@@ -128,8 +113,6 @@ class Question
     }
 
     /**
-     * Set form
-     *
      * @param \Dudek\FormBundle\Entity\Form $form
      * @return Question
      */
@@ -141,8 +124,6 @@ class Question
     }
 
     /**
-     * Get form
-     *
      * @return \Dudek\FormBundle\Entity\Form
      */
     public function getForm()
