@@ -26,15 +26,25 @@ class UserController extends Controller
         $form = $this->createForm(new RegistrationFormType(), $user);
         $form->handleRequest($request);
         if ($form->isValid()) {
+            $this->updatePassword($user);
             $dispatcher = $this->get('event_dispatcher');
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
-            $userManager->updateUser($user);
+            $this->getDoctrine()->getManager()->flush();
         }
 
         return $this->render('DudekUserBundle::register.html.twig', [
             'form' => $form->createView(),
             'user' => $user
         ]);
+    }
+
+    private function updatePassword($user)
+    {
+        $encoderFactory = $this->get('security.encoder_factory');
+        if (0 !== strlen($password = $user->getChosenPassword())) {
+            $encoder = $encoderFactory->getEncoder($user);
+            $user->setChosenPassword($encoder->encodePassword($password, $user->getSalt()));
+        }
     }
 }

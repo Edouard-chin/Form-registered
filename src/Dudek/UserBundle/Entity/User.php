@@ -28,6 +28,11 @@ class User extends BaseUser
      */
     protected $image;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $chosenPassword;
+
     public function __construct()
     {
         parent::__construct();
@@ -67,5 +72,24 @@ class User extends BaseUser
     {
         $this->image = $image;
         return $this;
+    }
+
+    /**
+     * @param string $chosenPassword
+     * @return User
+     */
+    public function setChosenPassword($chosenPassword)
+    {
+        $this->chosenPassword = $chosenPassword;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getChosenPassword()
+    {
+        return $this->chosenPassword;
     }
 }
