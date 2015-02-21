@@ -1,229 +1,37 @@
 <!DOCTYPE html>
 <html lang="{{ app.request.locale }}">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="author" content="Edouard CHIN" />
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Edouard CHIN" />
 
-  <title>{% block title %} Admin - {% endblock %}</title>
-  {% stylesheets
-  'bundles/dudekform/css/Back/entypo/css/entypo.css'
-  'bundles/dudekform/css/Back/neon-core.css'
-  'bundles/dudekform/css/Back/bootstrap.css'
-  filter='cssrewrite' output='css/all-admin.css'%}
-  <link rel="stylesheet" href="{{ asset_url }}" />
-  {% endstylesheets %}
-  {% block stylesheets %} {% endblock %}
+    <title>{% block title %} Admin - {% endblock %}</title>
+    {% stylesheets
+      'bundles/dudekform/css/Back/entypo/css/entypo.css'
+      'bundles/dudekform/css/Back/bootstrap.css'
+      filter='cssrewrite' output='css/compiled/base.css'%}
+      <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    {% block stylesheets %} {% endblock %}
 
-  {% javascripts
-  'bundles/dudekform/js/Back/jquery-1.11.0.min.js'
-  'bundles/dudekform/js/Back/gsap/main-gsap.js'
-  'bundles/dudekform/js/Back/bootstrap.js'
-  'bundles/dudekform/js/Back/resizeable.js'
-  'bundles/dudekform/js/Back/neon-custom.js'
-  output='js/all-admin.js' %}
-  <script src="{{ asset_url }}"></script>
-  {% endjavascripts %}
-  {% block javascripts_head %} {% endblock %}
+    {% javascripts
+      '@bootstrap_js'
+      'bundles/dudekform/js/Back/gsap/main-gsap.js'
+      'bundles/dudekform/js/Back/resizeable.js'
+      output='js/compiled/base.js' %}
+      <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% block javascripts_head %} {% endblock %}
 
-  <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
   </head>
-  <body class="page-body" data-url="http://neon.dev">
-    <div class="page-container">
-      <div class="sidebar-menu">
-        <header class="logo-env">
-          <div class="logo">
-            <a href="#">
-              {# <img src="assets/images/logo@2x.png" width="120" alt="" /> #}
-            </a>
-          </div>
-          <div class="sidebar-collapse">
-            <a href="#" class="sidebar-collapse-icon with-animation">
-              <i class="entypo-menu"></i>
-            </a>
-          </div>
-          <div class="sidebar-mobile-menu visible-xs">
-            <a href="#" class="with-animation"><!-- add class "with-animation" to support animation -->
-              <i class="entypo-menu"></i>
-            </a>
-          </div>
-        </header>
-        <ul id="main-menu" class="">
-          <li id="search">
-            <form method="get" action="">
-              <input type="text" name="q" class="search-input" placeholder="Search something..."/>
-              <button type="submit">
-                <i class="entypo-search"></i>
-              </button>
-            </form>
-          </li>
-          <li>
-            <a href="#">
-              <i class="entypo-gauge"></i>
-              <span>Dashboard</span>
-            </a>
-            <ul>
-              <li>
-                <a href="#">
-                  <span>Dashboard 1</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>Dashboard 2</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>Dashboard 3</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>Skins</span>
-                </a>
-                <ul>
-                  <li>
-                    <a href="#">
-                      <span>Black Skin</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <span>White Skin</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <span>Purple Skin</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <span>Cafe Skin</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <span>Red Skin</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <span>Green Skin</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <span>Yellow Skin</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <span>Blue Skin</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">
-                  <span>What's New</span>
-                  <span class="badge badge-success badge-roundless">v1.7</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <div class="main-content">
-        <div class="row">
-          <div class="col-md-6 col-sm-8 clearfix">
-            <ul class="user-info pull-left pull-none-xsm">
-              <li class="profile-info dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="#" alt="" class="img-circle" width="44" />
-                  Art Ramadani
-                </a>
-                <ul class="dropdown-menu">
-                  <li class="caret"></li>
-                  <li>
-                    <a href="#">
-                      <i class="entypo-user"></i>
-                      Edit Profile
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="entypo-mail"></i>
-                      Inbox
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="entypo-calendar"></i>
-                      Calendar
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="entypo-clipboard"></i>
-                      Tasks
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <ul class="user-info pull-left pull-right-xs pull-none-xsm">
-              <li class="notifications dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                  <i class="entypo-attention"></i>
-                  <span class="badge badge-info">6</span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li class="top">
-                    <p class="small">
-                      <a href="#" class="pull-right">Mark all Read</a>
-                      You have <strong>3</strong> new notifications.
-                    </p>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-6 col-sm-4 clearfix hidden-xs">
-            <ul class="list-inline links-list pull-right">
-              <li>
-                <a href="{{ path('fos_user_security_logout') }}">
-                  Log Out <i class="entypo-logout right"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <hr />
-        <ol class="breadcrumb bc-3">
-          <li>
-            <a href="#"><i class="entypo-home"></i>Home</a>
-          </li>
-          <li>
-            <a href="#">Extra</a>
-          </li>
-          <li class="active">
-            <strong>Gallery</strong>
-          </li>
-        </ol>
-        <div class="gallery-env">
-          {% block container %} {% endblock %}
-        </div>
-        <footer class="main"></footer>
-      </div>
-    </div>
-  </body>
+  {% block body %} {% endblock %}
+  {% block javascripts_body %} {% endblock %}
 </html>

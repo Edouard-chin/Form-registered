@@ -1,1 +1,208 @@
 {% extends '::base.html.twig' %}
+{% block stylesheets %}
+  {% stylesheets
+    'bundles/dudekform/css/Back/neon-core.css'
+    filter="cssrewrite" output="css/compiled/layout-admin.css" %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+  {% endstylesheets %}
+{% endblock %}
+{% block javascripts_head %}
+  {% javascripts
+    'bundles/dudekform/js/Back/neon-custom.js'
+    output="js/compiled/layout-admin.js" %}
+    <script src="{{ asset_url }}"> </script>
+  {% endjavascripts %}
+{% endblock %}
+{% block body %}
+  <body class="page-body">
+    <div class="page-container">
+      <div class="sidebar-menu">
+        <header class="logo-env">
+          <div class="logo">
+            <a href="#">
+              {# <img src="assets/images/logo@2x.png" width="120" alt="" /> #}
+            </a>
+          </div>
+          <div class="sidebar-collapse">
+            <a href="#" class="sidebar-collapse-icon with-animation">
+              <i class="entypo-menu"></i>
+            </a>
+          </div>
+          <div class="sidebar-mobile-menu visible-xs">
+            <a href="#" class="with-animation"><!-- add class "with-animation" to support animation -->
+              <i class="entypo-menu"></i>
+            </a>
+          </div>
+        </header>
+        <ul id="main-menu" class="">
+          <li id="search">
+            <form method="get" action="">
+              <input type="text" name="q" class="search-input" placeholder="Search something..."/>
+              <button type="submit">
+                <i class="entypo-search"></i>
+              </button>
+            </form>
+          </li>
+          <li>
+            <a href="#">
+              <i class="entypo-gauge"></i>
+              <span>Dashboard</span>
+            </a>
+            <ul>
+              <li>
+                <a href="#">
+                  <span>Dashboard 1</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span>Dashboard 2</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span>Dashboard 3</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span>Skins</span>
+                </a>
+                <ul>
+                  <li>
+                    <a href="#">
+                      <span>Black Skin</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span>White Skin</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span>Purple Skin</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span>Cafe Skin</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span>Red Skin</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span>Green Skin</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span>Yellow Skin</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span>Blue Skin</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">
+                  <span>What's New</span>
+                  <span class="badge badge-success badge-roundless">v1.7</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="main-content">
+        <div class="row">
+          <div class="col-md-6 col-sm-8 clearfix">
+            <ul class="user-info pull-left pull-none-xsm">
+              <li class="profile-info dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <img src="#" alt="" class="img-circle" width="44" />
+                  Art Ramadani
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="caret"></li>
+                  <li>
+                    <a href="#">
+                      <i class="entypo-user"></i>
+                      Edit Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="entypo-mail"></i>
+                      Inbox
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="entypo-calendar"></i>
+                      Calendar
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="entypo-clipboard"></i>
+                      Tasks
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="user-info pull-left pull-right-xs pull-none-xsm">
+              <li class="notifications dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                  <i class="entypo-attention"></i>
+                  <span class="badge badge-info">6</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="top">
+                    <p class="small">
+                      <a href="#" class="pull-right">Mark all Read</a>
+                      You have <strong>3</strong> new notifications.
+                    </p>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6 col-sm-4 clearfix hidden-xs">
+            <ul class="list-inline links-list pull-right">
+              <li>
+                <a href="{{ path('fos_user_security_logout') }}">
+                  Log Out <i class="entypo-logout right"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <ol class="breadcrumb bc-3">
+          <li>
+            <a href="#"><i class="entypo-home"></i>Home</a>
+          </li>
+          <li>
+            <a href="#">Extra</a>
+          </li>
+          <li class="active">
+            <strong>Gallery</strong>
+          </li>
+        </ol>
+        <div class="gallery-env">
+          {% block container %} {% endblock %}
+        </div>
+        <footer class="main"></footer>
+      </div>
+    </div>
+  </body>
+{% endblock %}

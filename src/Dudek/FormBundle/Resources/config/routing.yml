@@ -1,3 +1,7 @@
-dudek_form_admin:
+admin:
     prefix: /admin
     resource: "@DudekFormBundle/Resources/config/admin-routing.yml"
+
+front:
+    prefix: /
+    resource: "@DudekFormBundle/Resources/config/front-routing.yml"
