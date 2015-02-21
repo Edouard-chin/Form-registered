@@ -38,6 +38,7 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface, Conta
         $user->setEmail('echin@u-pro.fr');
         $user->setPlainPassword('edouardpass');
         $user->setRoles(array('ROLE_SUPER_ADMIN'));
+        $user->setFullName('Edouard CHIN');
         $user->setEnabled(true);
         $userManager->updateUser($user);
     }

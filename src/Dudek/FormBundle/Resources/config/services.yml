@@ -1,7 +1,4 @@
-parameters:
-#    dudek_form.example.class: Dudek\FormBundle\Example
-
 services:
-#    dudek_form.example:
-#        class: %dudek_form.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+   dudek.ldap_manager:
+       class: Dudek\FormBundle\Services\LdapManager
+       arguments: [ "%ldap_user%", "%ldap_password%"]
