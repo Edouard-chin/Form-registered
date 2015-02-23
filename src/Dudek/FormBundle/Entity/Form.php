@@ -149,6 +149,7 @@ class Form
     public function addStep(\Dudek\FormBundle\Entity\Step $step)
     {
         $this->steps[] = $step;
+        $step->setForm($this);
 
         return $this;
     }

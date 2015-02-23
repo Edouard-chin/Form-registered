@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+  <h1> Salut </h1>
+  {{ form_start(answerForm) }}
+    {% for form in answerForm %}
+      {{ form_row(form) }}
+    {% endfor %}
+    <button type="submit" class="btn btn-success">Valider </button>
+  {{ form_end(answerForm) }}
+{% endblock %}

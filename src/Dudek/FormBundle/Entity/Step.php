@@ -123,6 +123,7 @@ class Step
     public function addQuestion(\Dudek\FormBundle\Entity\Question $question)
     {
         $this->questions[] = $question;
+        $question->setStep($this);
 
         return $this;
     }

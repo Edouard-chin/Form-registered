@@ -1,0 +1,9 @@
+{% extends 'DudekFormBundle::layout-admin.html.twig' %}
+{% block container %}
+  {{ form_start(formType) }}
+    {{ form_row(formType.inscriptionMandatory) }}
+    {{ form_row(formType.closeDate) }}
+    {{ form_row(formType.name) }}
+    <button type="submit" class="btn btn-success pull-right">Poursuivre</button>
+  {{ form_end(formType) }}
+{% endblock %}

@@ -37,6 +37,7 @@ class ImportUserCommand extends ContainerAwareCommand
             $manager->updateUser($user, false);
             $bar->advance();
         }
+        $bar->finish();
         $em->flush();
     }
 }

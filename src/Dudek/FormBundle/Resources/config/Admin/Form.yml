@@ -5,3 +5,7 @@ back_form_index:
 back_form_create:
     path:   /create
     defaults: { _controller: "DudekFormBundle:Admin/Form:create" }
+
+back_form_add_step:
+    path:   /step/{id}
+    defaults: { _controller: "DudekFormBundle:Admin/Form:addStep" }

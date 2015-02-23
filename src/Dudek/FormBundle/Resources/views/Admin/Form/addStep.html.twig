@@ -1,0 +1,50 @@
+{% extends 'DudekFormBundle::layout-admin.html.twig' %}
+
+{% macro proto(form) %}
+  <div class="form-group">
+    <h3> Question __name__ </h3>
+    <div class="col-sm-4">
+      {{ form_widget(form.type) }}
+    </div>
+    <div class="col-sm-4">
+      {{ form_widget(form.name) }}
+    </div>
+    <div class="col-sm-1">
+      <button class="remove-question btn btn-danger">s</button>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+{% endmacro %}
+
+{% block container %}
+  {{ form_start(formStep, {'attr': {'class': 'form-wizard'}}) }}
+    {{ form_row(formStep.name) }}
+    {{ form_row(formStep.rank) }}
+    <div class="form-group">
+      <div id="append-new-question" data-prototype="{{ _self.proto(formStep.questions.vars.prototype)|e }}"></div>
+      <button class="btn btn-success" id="add-question"> Ajouter une question </button>
+    </div>
+    {{ form_widget(formStep.previous, {'attr': {'class': 'btn btn-success pull-left'}}) }}
+    {{ form_widget(formStep.finish, {'attr': {'class': 'btn btn-success'}}) }}
+    {{ form_widget(formStep.next, {'attr': {'class': 'btn btn-success'}}) }}
+    {% do formStep.questions.setRendered %}
+  {{ form_end(formStep) }}
+{% endblock %}
+
+{% block javascripts_body %}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#add-question").click(function(e) {
+        e.preventDefault();
+        var proto = $("#append-new-question").data('prototype');
+        var total = $("#append-new-question").children().length;
+        var newForm = proto.replace(/__name__/g, total);
+        $(newForm).appendTo("#append-new-question");
+      });
+      $("body").on('click', '.remove-question', function(e) {
+        e.preventDefault();
+        $(this).closest(".form-group").remove();
+      });
+    })
+  </script>
+{% endblock %}

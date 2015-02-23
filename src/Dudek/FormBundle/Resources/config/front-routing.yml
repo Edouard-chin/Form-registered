@@ -1,2 +1,6 @@
 front_user:
     resource: "@DudekFormBundle/Resources/config/Front/User.yml"
+
+front_form:
+    resource: "@DudekFormBundle/Resources/config/Front/Form.yml"
+    prefix: /form
